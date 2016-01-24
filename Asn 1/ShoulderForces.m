@@ -1,4 +1,4 @@
-function [ Fdelta, Fjx, Fjy, angle ] = ShoulderForces( weight, height, armAngle,armCOMtoFdeltAngle)
+function [ Fdelta, Fjx, Fjy, angle ] = ShoulderForces( weight, height, armAngle,armCOMtoFdeltAngle, FdeltDistToJoint)
 
 format compact
 syms Fdelta;
@@ -20,7 +20,7 @@ paperToBodyRatio = 3
 % sum of moments to solve for fDelta;
 syms Fdelt;
 
-jointToFdeltLength = 7.5/10*paperToBodyRatio % cm
+jointToFdeltLength = FdeltDistToJoint/10*paperToBodyRatio % cm
 
 moments = (0 == Fdelt*jointToFdeltLength -...
             armSegmentWeight*cos(degtorad(armMomentAngle))*armCOM);
