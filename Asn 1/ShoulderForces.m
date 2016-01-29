@@ -25,7 +25,8 @@ jointToFdeltLength = FdeltDistToJoint/10*paperToBodyRatio % cm
 
 moments = (0 == Fdelt*jointToFdeltLength -...
             (armSegmentWeight*cos(degtorad(armMomentAngle))*armCOM + ...
-             massHeld*co(degtorad(armMomentAngle))*armLength);
+             massHeld*cos(degtorad(armMomentAngle))*armLength));
+         
 Fdelt = double(solve(moments))
 
 Fjy = (armSegmentWeight+massHeld) - Fdelt*cos(degtorad(armAngle - armCOMtoFdeltAngle))
