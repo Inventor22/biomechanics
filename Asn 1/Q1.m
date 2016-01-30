@@ -35,13 +35,15 @@ for i = 1:2
         
         if (i == 1)
             title('No Mass');
-            elsecl
+        else
             title('20N Mass');
         end
         
-        arrow(imcenter(j, :)-[Fjx Fjy]/norm([Fjx, Fjy])*100, imcenter(j, :),...
+        arrow(imcenter(j, :)-[Fjx -Fjy]/norm([Fjx, Fjy])*100, imcenter(j, :),...
             'EdgeColor', 'r', 'FaceColor', 'r');
         text(imcenter(j,1)+10, imcenter(j,2)+10, num2str(norm([Fjx, Fjy])), 'color', 'b');
+        
+        %saveas(gcf, ['Abduction' num2str(abductionAngle(j)) 'M' num2str((i-1)*20) '.png']);
         
         disp(' ');
     end
